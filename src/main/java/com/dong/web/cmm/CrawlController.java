@@ -1,6 +1,4 @@
 package com.dong.web.cmm;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,7 +13,9 @@ import com.dong.web.pxy.Inven;
 
 @RestController
 @RequestMapping("/crawl")
+
 public class CrawlController {
+	
 	@Autowired CrawlingProxy cra;
 	@Autowired Box<String> box;
 	@Autowired Inven<String> inven;
@@ -26,7 +26,7 @@ public class CrawlController {
 		return cra.engCrawling();
 	}
 	@GetMapping("/cgv")
-	public  ArrayList<HashMap<String, String>> bringCgv() throws IOException{
+	public  ArrayList<HashMap<String, String>> bringCgv()  {
 		System.out.println("cgv 컨트롤러");
 		return cra.cgvCrawl();
 	}

@@ -89,9 +89,8 @@ app =(()=>{
 				})
 				break;
 			case 'BUGS':
+				$('#right').empty()
 				$.getJSON(_+'/crawl/bugs',d=>{
-					alert(d.list)
-					$('#right').empty()
 				})
 				break;
 			}
