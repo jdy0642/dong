@@ -81,4 +81,33 @@ public class CrawlingProxy extends Proxy {
 		inven.get().forEach(System.out :: println);
 		return inven.get();
 	}	
+	
+	public ArrayList<HashMap<String, String>> bugsCrawling() {
+		inven.clear();
+		try {
+			final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
+			String bugsurl = "https://music.bugs.co.kr/chart";
+			Connection.Response homePage = Jsoup.connect(bugsurl).method(Connection.Method.GET).userAgent(USER_AGENT)
+					.execute();
+			Document temp = homePage.parse();
+			Elements tempforTitle = temp.select("p.title");
+			Elements tempforContent = temp.select("p.artist");
+			Elements tempforphoto = temp.select("a.thumbnail");
+			HashMap<String, String> map = null;
+			int bugsseq = 0;
+			for (;bugsseq<tempforTitle.size();bugsseq++) {
+				map = new HashMap<>();
+				map.clear();
+				map.put("seq", string(bugsseq+1));
+				map.put("title", tempforTitle.get(bugsseq).text());
+				map.put("artist", tempforContent.get(bugsseq).text());
+				map.put("thumbnail", tempforphoto.get(bugsseq).select("img").attr("src"));
+				inven.add(map);
+			}
+		} catch (Exception e) {
+		}
+		System.out.println("********************크롤링결과********************");
+		inven.get().forEach(System.out :: println);
+		return inven.get();
+	}
 }
