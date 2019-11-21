@@ -1,9 +1,10 @@
-package com.dong.web.ctx;
+package com.dong.web.cfg;
 import javax.sql.DataSource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -11,7 +12,8 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @MapperScan(basePackages = {"com.dong.web"})
 @ComponentScan(basePackages = {"com.dong.web"})
-public class RootContext {
+@Import({MybatisConfig.class,ServletConfig.class})
+public class RootConfig {
 	@Bean
 	public DataSource dataSource() {
 		HikariConfig hikariConfig = new HikariConfig();

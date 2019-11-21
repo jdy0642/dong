@@ -1,0 +1,49 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dong.web.usr.UserMapper">
+
+	<select id="createUser" parameterType="map">
+		${CREATE_USER}
+	</select>
+	<select id="createRes" parameterType="map">
+		${CREATE_RES}
+	</select>
+	<select id="createDB" parameterType="hashmap">
+		${CREATE_DB}
+	</select>
+	<select id="dropUser" parameterType="map">
+		${DROP_USER}
+	</select>
+
+    <select id="selectUserByIdPw" resultType="User" parameterType="User" >
+        SELECT USERID uid , USERPW upw, USERNAME uname
+        FROM USER 
+        WHERE USERID LIKE #{uid} AND USERPW LIKE #{upw}
+    </select>
+    
+    <insert id="insertUser" parameterType="User" >
+        INSERT INTO USER (USERID, USERNAME, USERPW, USERTEL, USERPOINT, AGE, LOC, GENDER, EMAIL, BOOKMARK, LOLBLACK, FUTBLACK) VALUES (
+            #{uid}, #{uname},#{upw}, #{tel}, #{upoint}, #{age}, #{loc}, #{gender}, #{email}, #{bookmark}, #{lolblack}, #{futblack}
+        )
+    </insert>
+  
+ 	<select id="existId" resultType="Integer" parameterType="String" >
+          SELECT COUNT(*)
+			FROM USER
+			WHERE USERID LIKE #{uid} 
+    </select>
+ 	<select id="countUsers" resultType="Integer"  >
+          SELECT COUNT(*)
+			FROM USER
+    </select>
+	
+	<select id="createLolTable" parameterType="hashmap">
+		${CREATE_LOL}
+	</select>
+	<select id="createReportTable" parameterType="hashmap">
+		${CREATE_REPORT}
+	</select>
+	
+</mapper>

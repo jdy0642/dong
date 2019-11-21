@@ -1,18 +1,18 @@
-package com.dong.web.ctx;
+package com.dong.web.cfg;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
-public class WebContext extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { RootContext.class };
+		return new Class[] { RootConfig.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { ServletContext.class };
+		return new Class[] { ServletConfig.class };
 	}
 
 	@Override

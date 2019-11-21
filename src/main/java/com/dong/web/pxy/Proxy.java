@@ -7,7 +7,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import org.springframework.stereotype.Component;
-@Component
+@Component("pxy")
 public class Proxy {
 	public int integer(String param) {
 		Function<String, Integer> f = Integer :: parseInt;

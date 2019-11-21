@@ -27,8 +27,10 @@ public class PageProxy extends Proxy {
 		nowBlock = nowPage/blockSize;
 		startPage = blockSize*nowBlock;
 		endPage = (nowBlock!=(blockCount-1))? startPage +(blockSize-1) : pageCount-1;
+		
 		prevBlock = startPage-blockSize;
 		nextBlock = startPage+blockSize;
+		
 		existPrev = nowBlock !=0;
 		existNext = nowBlock != (blockCount-1);
 		
