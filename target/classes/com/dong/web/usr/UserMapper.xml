@@ -34,8 +34,8 @@
 			FROM USER
 			WHERE USERID LIKE #{uid} 
     </select>
- 	<select id="countUsers" resultType="Integer"  >
-          SELECT COUNT(*)
+ 	<select id="selectAll" resultType="User"   >
+          SELECT *
 			FROM USER
     </select>
 	
